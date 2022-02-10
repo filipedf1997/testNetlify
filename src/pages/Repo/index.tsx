@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useRouteMatch } from 'react-router';
-import { Header, RepoInfo, Issues } from './styles';
+import { Header, Issues } from './styles';
+import RepoInfo from '../../components/RepoInfo';
 import logo from '../../assets/logo.svg';
 import { Link } from 'react-router-dom';
 import { FiChevronLeft } from 'react-icons/fi';
@@ -71,29 +72,14 @@ const Repo: React.FC = () => {
       </Header>
 
       {repository && (
-        <RepoInfo>
-          <header>
-            <img src={repository?.owner.avatar_url} alt="Aluizio Developer" />
-            <div>
-              <strong>{repository?.full_name}</strong>
-              <p>{repository?.description}</p>
-            </div>
-          </header>
-          <ul>
-            <li>
-              <strong>{repository?.stargazers_count}</strong>
-              <span>Stars</span>
-            </li>
-            <li>
-              <strong>{repository?.forks_count}</strong>
-              <span>Forks</span>
-            </li>
-            <li>
-              <strong>{repository?.open_issues_count}</strong>
-              <span>Issues abertas</span>
-            </li>
-          </ul>
-        </RepoInfo>
+        <RepoInfo
+          avatar_url={repository?.owner.avatar_url}
+          full_name={repository?.full_name}
+          description={repository?.description}
+          stargazers_count={repository?.stargazers_count}
+          forks_count={repository?.forks_count}
+          open_issues_count={repository?.open_issues_count}
+        />
       )}
 
       <Issues>

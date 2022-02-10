@@ -1,0 +1,11 @@
+{
+  "full_name": "React",
+  "description": "Uma biblioteca JavaScript para criar interfaces de usuário",
+  "owner": {
+    "login": "Facebook",
+    "avatar_url": "photo.png"
+  },
+  "stargazers_count": "10",
+  "forks_count": "15",
+  "open_issues_count": "20"
+}

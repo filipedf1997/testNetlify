@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-interface FormProps {
+interface InputProps {
   hasError: boolean;
 }
 
@@ -12,30 +12,25 @@ export const Title = styled.h1`
   margin-top: 80px;
 `;
 
-export const Form = styled.form<FormProps>`
+export const Input = styled.input<InputProps>`
+  flex: 1;
+  height: 70px;
+  padding: 0 24px;
+  border: 2px solid #fff;
+  border-radius: 5px 0 0 5px;
+  color: #3a3a3a;
+  border-right: 0;
+  border-color: ${props => (props.hasError ? '#c53030' : undefined)};
+
+  &::placeholder {
+    color: #a8a8b3;
+  }
+`;
+
+export const Form = styled.form`
   margin-top: 40px;
   max-width: 700px;
   display: flex;
-
-  input {
-    flex: 1;
-    height: 70px;
-    padding: 0 24px;
-    border: 2px solid #fff;
-    border-radius: 5px 0 0 5px;
-    color: #3a3a3a;
-    border-right: 0;
-
-    ${props =>
-      props.hasError &&
-      css`
-        border-color: #c53030;
-      `};
-
-    &::placeholder {
-      color: #a8a8b3;
-    }
-  }
 
   button {
     width: 160px;
@@ -53,50 +48,67 @@ export const Form = styled.form<FormProps>`
 `;
 
 export const Repos = styled.div`
-  margin-top: 80px;
   max-width: 700px;
+  margin-top: 80px;
 
-  a {
-    background: #fff;
-    border-radius: 5px;
-    width: 100%;
-    padding: 24px;
+  > div {
     display: flex;
-    align-items: center;
-    transition: transform 0.2s;
+    margin-bottom: 24px;
 
-    &:hover {
-      transform: translateX(6px);
-    }
+    button {
+      border: none;
+      background-color: transparent;
+      align-self: center;
+      cursor: pointer;
+      margin-left: 16px;
 
-    & + a {
-      margin-top: 16px;
-    }
-
-    img {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-    }
-
-    div {
-      margin: 0 16px;
-      flex: 1;
-
-      strong {
-        font-size: 20px;
-        color: #3d3d4d;
-      }
-
-      p {
-        font-size: 18px;
-        color: #a8a8b3;
-        margin-top: 4px;
+      svg {
+        color: #c53030;
       }
     }
 
-    svg {
-      color: #cbcbd6;
+    a {
+      background: #fff;
+      border-radius: 5px;
+      width: 100%;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      transition: transform 0.2s;
+
+      &:hover {
+        transform: translateX(6px);
+      }
+
+      & + a {
+        margin-top: 16px;
+      }
+
+      img {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+      }
+
+      div {
+        margin: 0 16px;
+        flex: 1;
+
+        strong {
+          font-size: 20px;
+          color: #3d3d4d;
+        }
+
+        p {
+          font-size: 18px;
+          color: #a8a8b3;
+          margin-top: 4px;
+        }
+      }
+
+      svg {
+        color: #cbcbd6;
+      }
     }
   }
 `;
