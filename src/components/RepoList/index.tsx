@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom';
 
 interface RepoListProps {
   repos: Array<GithubRepository>;
-  removeItem: any;
+  removeRepo: any;
 }
 
-const RepoList = ({ repos }: RepoListProps) => {
+const RepoList = ({ repos, removeRepo }: RepoListProps) => {
   return (
     <Container>
       {repos.map((repo, index) => (
@@ -22,6 +22,9 @@ const RepoList = ({ repos }: RepoListProps) => {
             </div>
             <FiChevronRight size={20} />
           </Link>
+          <button title="Excluir repositório" onClick={() => removeRepo(repo)}>
+            <FiXCircle size={30} />
+          </button>
         </div>
       ))}
     </Container>

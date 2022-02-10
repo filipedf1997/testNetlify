@@ -81,7 +81,7 @@ const Dashboard: React.FC = () => {
 
       {!!inputError && <Error>{inputError}</Error>}
 
-      <RepoList repos={repos} />
+      <RepoList repos={repos} removeRepo={removeItemLocalStorage} />
     </>
   );
 };
