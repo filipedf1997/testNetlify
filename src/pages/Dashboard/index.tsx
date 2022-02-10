@@ -1,10 +1,9 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import { FiChevronRight, FiXCircle } from 'react-icons/fi';
-import { Title, Form, Repos, Error, Input } from './styles';
+import { Title, Form, Error, Input } from './styles';
 import logo from '../../assets/logo.svg';
 import { api } from '../../services/api';
 import { fechtRepoInfo } from '../../services/repoServices';
-import { Link } from 'react-router-dom';
+import RepoList from '../../components/RepoList';
 
 export interface GithubRepository {
   id: string;
@@ -82,20 +81,7 @@ const Dashboard: React.FC = () => {
 
       {!!inputError && <Error>{inputError}</Error>}
 
-      <Repos>
-        {repos.map((repo, index) => (
-          <div key={repo.full_name + index}>
-            <Link to={`/repositories/${repo.full_name}`}>
-              <img src={repo.owner.avatar_url} alt={repo.owner.login} />
-              <div>
-                <strong>{repo.full_name}</strong>
-                <p>{repo.description}</p>
-              </div>
-              <FiChevronRight size={20} />
-            </Link>
-          </div>
-        ))}
-      </Repos>
+      <RepoList repos={repos} removeItem={removeItemLocalStorage} />
     </>
   );
 };
