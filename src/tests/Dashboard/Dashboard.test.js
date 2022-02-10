@@ -3,7 +3,7 @@
 import { fireEvent, render } from '@testing-library/react';
 import 'jest-styled-components';
 import renderer from 'react-test-renderer';
-import { Form, Input, Repos } from '../../pages/Dashboard/styles';
+import { Form, Input } from '../../pages/Dashboard/styles';
 
 describe('Teste do componente Form da tela de Dashboard', () => {
   it('a função de callback do Form deve ser chamada ao se clicar no botão "Buscar"', () => {
@@ -23,22 +23,5 @@ describe('Teste do componente Form da tela de Dashboard', () => {
     const input = renderer.create(<Input hasError />).toJSON();
 
     expect(input).toHaveStyleRule('border-color', '#c53030');
-  });
-});
-
-describe('Teste do componente Repos da tela de Dashboard', () => {
-  it('o botão de excluir repositório deve executar a função corretamente', () => {
-    const removeRepo = jest.fn();
-
-    const { getByRole } = render(
-      <Repos>
-        <div>
-          <button>Excluir</button>
-        </div>
-      </Repos>,
-    );
-
-    const button = getByRole('button');
-    expect(button).toBeTruthy();
   });
 });
